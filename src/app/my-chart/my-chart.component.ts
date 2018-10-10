@@ -10,9 +10,10 @@ import { Observable } from 'rxjs';
   templateUrl: './my-chart.component.html',
   styleUrls: ['./my-chart.component.css']
 })
+
 export class MyChartComponent  {
 
-  fabio = 'dev ops';
+fabio = 'dev ops';
 title = 'app works';
 private apiUrl = 'http://104.197.35.1:3000/serie';
 Series: Array<Serie> =  [];

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { products } from './products';
 
 import { tap } from 'rxjs/operators/tap';
 import { map } from 'rxjs/operators/map';
@@ -67,12 +68,24 @@ export class EditService extends BehaviorSubject<any[]> {
     }
 
     private fetch(action: string = '', data?: any): Observable<any[]> {
-        return this.http
-            .jsonp(`https://demos.telerik.com/kendo-ui/service/Products/${action}?${this.serializeModels(data)}`, 'callback')
+        if ( action.length > 0)    {
+            return this.http
+            /*.jsonp(`https://demos.telerik.com/kendo-ui/service/Products/${action}?${this.serializeModels(data)}`, 'callback') */
+            .jsonp(`http://104.197.35.1:3000/product/${action}?${this.serializeModels(data)}`, 'callback')
             .pipe(map(res => <any[]>res));
+
+        } else {
+
+            return this.http
+            .jsonp(`http://104.197.35.1:3000/product/${this.serializeModels(data)}`, 'callback')
+            .pipe(map(res => <any[]>res));
+
+        }
+
     }
 
     private serializeModels(data?: any): string {
-        return data ? `&models=${JSON.stringify([data])}` : '';
+        console.log(data);
+        return data ? `models=${JSON.stringify([data])}` : '';
     }
 }
