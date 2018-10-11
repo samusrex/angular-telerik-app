@@ -26,9 +26,16 @@
               {
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
               },
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/materialize-css/dist/css/materialize.min.css"
+
             ],
-            "scripts": []
+            "scripts": [
+
+               "node_modules/jquery/dist/jquery.min.js",
+               "node_modules/materialize-css/dist/js/materialize.min.js"
+
+            ]
           },
           "configurations": {
             "production": {

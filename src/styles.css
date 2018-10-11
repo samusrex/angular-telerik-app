@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: static!important;
+    left: 0px!important;
+    opacity: 1!important;
+    visibility: visible!important;
+    pointer-events: all!important;
+    }
