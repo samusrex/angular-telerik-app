@@ -85,7 +85,7 @@ export class EditService extends BehaviorSubject<any[]> {
     }
 
     private serializeModels(data?: any): string {
-        console.log(data);
+        //console.log(data);
         return data ? `models=${JSON.stringify([data])}` : '';
     }
 }

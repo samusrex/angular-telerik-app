@@ -62,7 +62,7 @@ export class EditGridComponent implements OnInit {
       this.closeEditor(sender);
 
       this.formGroup = new FormGroup({
-          'ProductID': new FormControl(dataItem.ProductID),
+          'ProductID': new FormControl(dataItem._id),
           'ProductName': new FormControl(dataItem.ProductName, Validators.required),
           'UnitPrice': new FormControl(dataItem.UnitPrice),
           'UnitsInStock': new FormControl(
