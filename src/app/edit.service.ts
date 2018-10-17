@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators/map';
 
 const CREATE_ACTION = 'create';
 const UPDATE_ACTION = 'update';
-const REMOVE_ACTION = 'destroy';
+const REMOVE_ACTION = 'delete';
 
 @Injectable()
 export class EditService extends BehaviorSubject<any[]> {
@@ -70,13 +70,14 @@ export class EditService extends BehaviorSubject<any[]> {
     private fetch(action: string = '', data?: any): Observable<any[]> {
         if ( action.length > 0)    {
             return this.http
-            /*.jsonp(`https://demos.telerik.com/kendo-ui/service/Products/${action}?${this.serializeModels(data)}`, 'callback') */
+            //.jsonp(`https://demos.telerik.com/kendo-ui/service/Products/${action}?${this.serializeModels(data)}`, 'callback')
             .jsonp(`http://104.197.35.1:3000/product/${action}?${this.serializeModels(data)}`, 'callback')
             .pipe(map(res => <any[]>res));
 
         } else {
 
             return this.http
+            //.jsonp(`https://demos.telerik.com/kendo-ui/service/Products/${action}?${this.serializeModels(data)}`, 'callback')
             .jsonp(`http://104.197.35.1:3000/product/${this.serializeModels(data)}`, 'callback')
             .pipe(map(res => <any[]>res));
 
@@ -85,7 +86,6 @@ export class EditService extends BehaviorSubject<any[]> {
     }
 
     private serializeModels(data?: any): string {
-        //console.log(data);
-        return data ? `models=${JSON.stringify([data])}` : '';
+       return data ? `models=${JSON.stringify([data])}` : '';
     }
 }
